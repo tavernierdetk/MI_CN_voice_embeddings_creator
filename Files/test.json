@@ -1,0 +1,37 @@
+[2023-03-08 19:30:55 +0000] [1] [INFO] Starting gunicorn 20.1.0
+[2023-03-08 19:30:55 +0000] [1] [INFO] Listening at: http://0.0.0.0:5901 (1)
+[2023-03-08 19:30:55 +0000] [1] [INFO] Using worker: uvicorn.workers.UvicornWorker
+[2023-03-08 19:30:55 +0000] [11] [INFO] Booting worker with pid: 11
+Downloading: 100% 2.00k/2.00k [00:00<00:00, 294kB/s]
+[2023-03-08 19:31:25 +0000] [11] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/gunicorn/arbiter.py", line 589, in spawn_worker
+    worker.init_process()
+  File "/usr/local/lib/python3.8/site-packages/uvicorn/workers.py", line 66, in init_process
+    super(UvicornWorker, self).init_process()
+  File "/usr/local/lib/python3.8/site-packages/gunicorn/workers/base.py", line 134, in init_process
+    self.load_wsgi()
+  File "/usr/local/lib/python3.8/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/usr/local/lib/python3.8/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/usr/local/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+    return self.load_wsgiapp()
+  File "/usr/local/lib/python3.8/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/usr/local/lib/python3.8/site-packages/gunicorn/util.py", line 359, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/local/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/app/main.py", line 14, in <module>
+    embeddings_creation_pipeline = Pipeline.from_pretrained("pyannote/embedding", use_auth_token="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")
+  File "/usr/local/lib/python3.8/site-packages/pyannote/audio/core/pipeline.py", line 120, in from_pretrained
+    pipeline_name = config["pipeline"]["name"]
+KeyError: 'pipeline'
+[2023-03-08 19:31:25 +0000] [11] [INFO] Worker exiting (pid: 11)
